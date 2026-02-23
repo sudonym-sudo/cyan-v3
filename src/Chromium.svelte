@@ -8,9 +8,40 @@
     let iframeContainer: HTMLDivElement;
     let hasAcceptedWarning = false;
 
-    const PROXY_URL = "https://fastforwarder.org/learn.html";
+    const PROXY_BASE = "https://fastforwarder.org/uv/service/";
 
     const dispatch = createEventDispatcher();
+
+    function xorEncode(str: string) {
+        if (!str) return str;
+        return encodeURIComponent(
+            str
+                .toString()
+                .split("")
+                .map((char, ind) =>
+                    ind % 2
+                        ? String.fromCharCode(char.charCodeAt(0) ^ 2)
+                        : char,
+                )
+                .join(""),
+        );
+    }
+
+    function getProxiedUrl(url: string) {
+        let finalUrl = url;
+        const searchUrl = "https://www.google.com/search?q=";
+
+        if (!finalUrl.includes(".")) {
+            finalUrl = searchUrl + encodeURIComponent(finalUrl);
+        } else if (
+            !finalUrl.startsWith("http://") &&
+            !finalUrl.startsWith("https://")
+        ) {
+            finalUrl = "https://" + finalUrl;
+        }
+
+        return PROXY_BASE + xorEncode(finalUrl);
+    }
 
     function acceptWarning() {
         hasAcceptedWarning = true;
@@ -21,7 +52,7 @@
 
         iframeElement = document.createElement("iframe");
         iframeElement.title = "Chromium Proxy";
-        iframeElement.src = PROXY_URL;
+        iframeElement.src = getProxiedUrl("https://google.com");
         iframeElement.style.width = "100%";
         iframeElement.style.height = "100%";
         iframeElement.style.border = "none";
@@ -68,11 +99,20 @@
         try {
             iframeElement?.contentWindow?.location.reload();
         } catch (e) {
-            if (iframeElement) iframeElement.src = PROXY_URL;
+            if (iframeElement) {
+                const currentSrc = iframeElement.src;
+                iframeElement.src = "about:blank";
+                setTimeout(() => {
+                    if (iframeElement) iframeElement.src = currentSrc;
+                }, 10);
+            }
         }
     }
     function navigate(url: string) {
         inputUrl = url;
+        if (iframeElement) {
+            iframeElement.src = getProxiedUrl(url);
+        }
     }
 
     export { goBack, goForward, refresh, navigate, inputUrl };
@@ -142,5 +182,13 @@
         position: relative;
         min-height: 0;
         overflow: hidden;
+    }
+
+    .iframe-wrapper :global(iframe) {
+        position: absolute;
+        top: -34px;
+        left: 0;
+        width: 100%;
+        height: calc(100% + 34px);
     }
 </style>
