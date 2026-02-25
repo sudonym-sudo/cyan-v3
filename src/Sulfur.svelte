@@ -167,7 +167,15 @@
     </div>
 
     <div class="chat-history" bind:this={chatContainer}>
-        <div class="load-more" on:click={loadMoreMessages}>-- load more --</div>
+        <div
+            class="load-more"
+            on:click={loadMoreMessages}
+            on:keypress={(e) => e.key === "Enter" && loadMoreMessages()}
+            role="button"
+            tabindex="0"
+        >
+            -- load more --
+        </div>
 
         {#each messages as msg, i (i)}
             {@const processed = processMessage(msg)}
@@ -223,7 +231,7 @@
                             <button
                                 class="show-more-less"
                                 on:click={() => toggleExpanded(i)}
-                                >Show Less</button
+                                >[ SHOW LESS ]</button
                             >
                         {:else}
                             {processed.text.slice(0, MAX_MESSAGE_LENGTH) +
@@ -231,7 +239,7 @@
                             <button
                                 class="show-more-less"
                                 on:click={() => toggleExpanded(i)}
-                                >Show More ({processed.text.length})</button
+                                >[ SHOW MORE ]</button
                             >
                         {/if}
                     {:else}
@@ -508,17 +516,22 @@
         opacity: 0.3;
         cursor: default;
     }
+
     .show-more-less {
-        background: none;
+        background: transparent;
         border: none;
         color: var(--accent-cyan);
-        cursor: pointer;
+        font-family: var(--font-mono);
         font-size: 11px;
-        margin-left: 10px;
-        padding: 0;
-        text-decoration: underline;
+        cursor: pointer;
+        padding: 0 4px;
+        margin-left: 4px;
+        opacity: 0.7;
+        transition: opacity 0.2s;
     }
+
     .show-more-less:hover {
-        color: var(--accent-cyan-dim);
+        opacity: 1;
+        text-decoration: underline;
     }
 </style>

@@ -343,8 +343,7 @@
         font-family: "monospace", monospace;
     }
 
-    .view-switcher button,
-    .back-button {
+    .view-switcher button {
         background-color: #222;
         color: #e0e0e0;
         border: 1px solid #444;

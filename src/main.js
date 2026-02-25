@@ -14,11 +14,12 @@ async function initGlobalProxy() {
         window.location.protocol === "about:" || 
         window.location.origin === "null" || 
         window.location.origin === null ||
-        window.location.href === "about:blank";
+        window.location.href === "about:blank" ||
+        window.location.hostname.includes("googleusercontent.com");
 
     if (!isRestricted && !forceProxy) return;
     
-    console.log("[proxy] restricted environment or manual override detected, initializing epoxy...");
+    console.log("[proxy] initializing epoxy for restricted environment...");
     try {
         const transport = new EpoxyTransport({ wisp: "wss://fastforwarder.org/wisp/" });
         await transport.init();
@@ -28,9 +29,7 @@ async function initGlobalProxy() {
         window.fetch = async (input, init) => {
             const url = typeof input === "string" ? input : (input && input.url) || input.toString();
             
-            // proxy google ai, firebase, and huggingface requests
             if (url.includes("googleapis.com") || url.includes("firebase") || url.includes("huggingface")) {
-                console.log(`[proxy] fetching: ${url}`);
                 const method = init?.method || "GET";
                 let headers = new Headers();
                 if (init?.headers) {
@@ -46,7 +45,13 @@ async function initGlobalProxy() {
                         if (Array.isArray(resp.headers)) resp.headers.forEach(([k, v]) => finalHeaders.set(k, v));
                         else Object.entries(resp.headers).forEach(([k, v]) => finalHeaders.set(k, v));
                     }
-                    return new Response(resp.body, { status: resp.status, headers: finalHeaders });
+                    
+                    // pass the body directly as a stream
+                    return new Response(resp.body, { 
+                        status: resp.status, 
+                        statusText: resp.statusText || 'OK',
+                        headers: finalHeaders 
+                    });
                 } catch (e) {
                     console.error("[proxy] fetch failed:", e);
                     return originalFetch(input, init);
@@ -78,7 +83,6 @@ async function initGlobalProxy() {
 
             xhr.send = async function(body) {
                 if (targetUrl.includes("googleapis.com") || targetUrl.includes("firebase")) {
-                    console.log(`[proxy] XHR sending: ${targetUrl}`);
                     try {
                         const resp = await transport.request(new URL(targetUrl), targetMethod, body, requestHeaders);
                         
@@ -103,13 +107,12 @@ async function initGlobalProxy() {
             return xhr;
         };
 
-        console.log("[proxy] global fetch and XHR patched");
+        console.log("[proxy] patches active");
     } catch (e) {
-        console.error("[proxy] global init failed:", e);
+        console.error("[proxy] init failed:", e);
     }
 }
 
-// wait for proxy before mounting
 initGlobalProxy().then(() => {
     mount(App, {
         target: document.getElementById('app'),

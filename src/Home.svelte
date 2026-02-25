@@ -141,22 +141,6 @@
         gap: 40px;
     }
 
-    .home-header {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    h1 {
-        font-size: 2em;
-        font-weight: 500;
-        margin: 0 0 10px 0;
-    }
-
-    .subtitle {
-        color: var(--text-secondary);
-        font-size: 1.1em;
-    }
-
     /* Apps Grid */
     .apps-grid {
         display: grid;
@@ -198,12 +182,6 @@
         margin: 0 0 5px 0;
         font-size: 1.1em;
         font-weight: 500;
-    }
-
-    .app-info p {
-        margin: 0;
-        font-size: 0.9em;
-        color: var(--text-secondary);
     }
 
     /* Recents */
