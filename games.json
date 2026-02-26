@@ -617,13 +617,13 @@
       "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/Balatro/bala.jpg",
       "genre": "Rougelike",
       "type": "HTML",
-      "link": "https://rawcdn.githack.com/MemeCake789/cyan-games/989c59cfdf57b47f656ae39ee8fba3fbd74055b5/Balatro/index.min.html",
+      "link": "https://cyan-assets.vercel.app/HTML/Balatro",
       "description": "joker poker balala",
       "status": [
         "Bugged",
         "Game saving does not work, but you can just unlock everything in the profile menu."
       ],
-      "fixedDate": "2026-02-15"
+      "fixedDate": "2026-02-25"
     },
     {
       "title": "Hollow Night",
@@ -632,7 +632,7 @@
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/hollowNight",
       "description": "",
-      "fixedDate" :"2026-02-20",
+      "fixedDate": "2026-02-20",
       "status": ["Bugged", "game crashes randomly "]
     },
     {
@@ -1848,6 +1848,186 @@
       "status": ["Working", "This game has no issues :D"],
       "dateAdded": "2026-01-18",
       "dateFixed": ""
+    },
+    {
+      "title": "Drift",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-drift/cover.png",
+      "genre": "Racing",
+      "type": "HTML",
+      "link": "https://cyan-assets.vercel.app/HTML/selenite-drift/index.html",
+      "description": "",
+      "status": ["Working", "This game has no issues :D"],
+      "dateAdded": "2026-02-25"
+    },
+    {
+      "title": "Drift Boss",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-drift-boss/icon.png",
+      "genre": "Racing",
+      "type": "HTML",
+      "link": "https://cyan-assets.vercel.app/HTML/selenite-drift-boss/index.html",
+      "description": "",
+      "status": ["Working", "This game has no issues :D"],
+      "dateAdded": "2026-02-25"
+    },
+    {
+      "title": "Fleeing the Complex",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-fleeingthecomplex/flee.jpg",
+      "genre": "Adventure",
+      "type": "HTML",
+      "link": "https://cyan-assets.vercel.app/HTML/selenite-fleeingthecomplex/index.html",
+      "description": "",
+      "status": ["Working", "This game has no issues :D"],
+      "dateAdded": "2026-02-25"
+    },
+    {
+      "title": "Friday Night Funkin",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-fridaynightfunkin/favicon.png",
+      "genre": "Music",
+      "type": "HTML",
+      "link": "https://cyan-assets.vercel.app/HTML/selenite-fridaynightfunkin/index.html",
+      "description": "",
+      "status": ["Working", "This game has no issues :D"],
+      "dateAdded": "2026-02-25"
+    },
+    {
+      "title": "Half-Life 2",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-hl2/cover.png",
+      "genre": "Shooter",
+      "type": "HTML",
+      "link": "https://cyan-assets.vercel.app/HTML/selenite-hl2/index.html",
+      "description": "",
+      "status": ["Working", "This game has no issues :D"],
+      "dateAdded": "2026-02-25"
+    },
+    {
+      "title": "Infiltrating the Airship",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-infiltratingtheairship/air.avif",
+      "genre": "Adventure",
+      "type": "HTML",
+      "link": "https://cyan-assets.vercel.app/HTML/selenite-infiltratingtheairship/index.html",
+      "description": "",
+      "status": ["Working", "This game has no issues :D"],
+      "dateAdded": "2026-02-25"
+    },
+    {
+      "title": "Jetpack Joyride",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-jetpackjoyride/logo.jpeg",
+      "genre": "Runner",
+      "type": "HTML",
+      "link": "https://cyan-assets.vercel.app/HTML/selenite-jetpackjoyride/index.html",
+      "description": "",
+      "status": ["Working", "This game has no issues :D"],
+      "dateAdded": "2026-02-25"
+    },
+    {
+      "title": "Moto X3M",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-motox3m/splash.jpg",
+      "genre": "Racing",
+      "type": "HTML",
+      "link": "https://cyan-assets.vercel.app/HTML/selenite-motox3m/index.html",
+      "description": "",
+      "status": ["Working", "This game has no issues :D"],
+      "dateAdded": "2026-02-25"
+    },
+    {
+      "title": "Paper Mario",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-papermario/papermario.png",
+      "genre": "RPG",
+      "type": "HTML",
+      "link": "https://cyan-assets.vercel.app/HTML/selenite-papermario/index.html",
+      "description": "",
+      "status": ["Working", "This game has no issues :D"],
+      "dateAdded": "2026-02-25"
+    },
+    {
+      "title": "Rocket League",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-rocketleague/splash.webp",
+      "genre": "Sports",
+      "type": "HTML",
+      "link": "https://cyan-assets.vercel.app/HTML/selenite-rocketleague/index.html",
+      "description": "",
+      "status": ["Working", "This game has no issues :D"],
+      "dateAdded": "2026-02-25"
+    },
+    {
+      "title": "Snow Rider 3D",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-snowrider3d/snow.png",
+      "genre": "Racing",
+      "type": "HTML",
+      "link": "https://cyan-assets.vercel.app/HTML/selenite-snowrider3d/index.html",
+      "description": "",
+      "status": ["Working", "This game has no issues :D"],
+      "dateAdded": "2026-02-25"
+    },
+    {
+      "title": "Super Mario 64",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-supermario64/icon.png",
+      "genre": "Platformer",
+      "type": "HTML",
+      "link": "https://cyan-assets.vercel.app/HTML/selenite-supermario64/index.html",
+      "description": "",
+      "status": ["Working", "This game has no issues :D"],
+      "dateAdded": "2026-02-25"
+    },
+    {
+      "title": "TABS",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-tabs/unnamed.png",
+      "genre": "Strategy",
+      "type": "HTML",
+      "link": "https://cyan-assets.vercel.app/HTML/selenite-tabs/index.html",
+      "description": "",
+      "status": ["Working", "This game has no issues :D"],
+      "dateAdded": "2026-02-25"
+    },
+    {
+      "title": "The Impossible Quiz",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-theimpossiblequiz/tiq.avif",
+      "genre": "Puzzle",
+      "type": "HTML",
+      "link": "https://cyan-assets.vercel.app/HTML/selenite-theimpossiblequiz/index.html",
+      "description": "",
+      "status": ["Working", "This game has no issues :D"],
+      "dateAdded": "2026-02-25"
+    },
+    {
+      "title": "There Is No Game",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-thereisnogame/ting.png",
+      "genre": "Puzzle",
+      "type": "HTML",
+      "link": "https://cyan-assets.vercel.app/HTML/selenite-thereisnogame/index.html",
+      "description": "",
+      "status": ["Working", "This game has no issues :D"],
+      "dateAdded": "2026-02-25"
+    },
+    {
+      "title": "Thirty Dollar Website",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-thirtydollarwebsite/assets/🗿.png",
+      "genre": "Music",
+      "type": "HTML",
+      "link": "https://cyan-assets.vercel.app/HTML/selenite-thirtydollarwebsite/index.html",
+      "description": "",
+      "status": ["Working", "This game has no issues :D"],
+      "dateAdded": "2026-02-25"
+    },
+    {
+      "title": "Tomb of the Mask",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-tombofthemask/cover.png",
+      "genre": "Arcade",
+      "type": "HTML",
+      "link": "https://cyan-assets.vercel.app/HTML/selenite-tombofthemask/index.html",
+      "description": "",
+      "status": ["Working", "This game has no issues :D"],
+      "dateAdded": "2026-02-25"
+    },
+    {
+      "title": "Universal Paperclips",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-universal-paperclips/universal-paperclips.png",
+      "genre": "Incremental",
+      "type": "HTML",
+      "link": "https://cyan-assets.vercel.app/HTML/selenite-universal-paperclips/index.html",
+      "description": "",
+      "status": ["Working", "This game has no issues :D"],
+      "dateAdded": "2026-02-25"
     }
   ]
 }
