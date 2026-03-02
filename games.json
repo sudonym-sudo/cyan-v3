@@ -2,7 +2,7 @@
   "games": [
     {
       "title": "2048",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/2048/2048.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/2048/2048.png",
       "genre": "Puzzle",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/2048/2048.html",
@@ -15,7 +15,7 @@
     {
       "title": "Advance Wars",
       "core": "mgba",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/EMULATORS/images/advancewars.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/EMULATORS/images/advancewars.jpg",
       "genre": "Action-Adventure",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/EMULATORS/index%20(4).html",
@@ -27,7 +27,7 @@
     },
     {
       "title": "Derek 1",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/derek1/derek1.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/derek1/derek1.jpg",
       "genre": "Platformer",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/derek1/derek1.html",
@@ -39,7 +39,7 @@
     },
     {
       "title": "Derek 2",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/derek2/derek2.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/derek2/derek2.jpg",
       "genre": "Platformer",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/derek2/derek2.html",
@@ -51,7 +51,7 @@
     },
     {
       "title": "Derek 3",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/derek3/derek3.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/derek3/derek3.jpg",
       "genre": "Platformer",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/derek3/derek3.html",
@@ -63,7 +63,7 @@
     },
     {
       "title": "Derek 4",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/derek4/derek4.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/derek4/derek4.jpg",
       "genre": "Platformer",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/derek4/derek4.html",
@@ -75,7 +75,7 @@
     },
     {
       "title": "Derek 5",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/derek5/derek5.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/derek5/derek5.jpg",
       "genre": "Platformer",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/derek5/derek5.html",
@@ -87,7 +87,7 @@
     },
     {
       "title": "Derek 6",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/derek6/derek6.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/derek6/derek6.jpg",
       "genre": "Platformer",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/derek6/derek6.html",
@@ -99,7 +99,7 @@
     },
     {
       "title": "Derek 7",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/derek7/derek7.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/derek7/derek7.jpg",
       "genre": "Platformer",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/derek7/derek7.html",
@@ -111,7 +111,7 @@
     },
     {
       "title": "Derek 8",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/derek8/derek8.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/derek8/derek8.jpg",
       "genre": "Platformer",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/derek8/derek8.html",
@@ -123,10 +123,10 @@
     },
     {
       "title": "Minecraft",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/minecraft/minecraft.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/minecraft/minecraft.jpg",
       "genre": "Sandbox",
       "type": "HTML",
-      "link": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/minecraft/minecraft.html",
+      "link": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/minecraft/minecraft.html",
       "description": "",
       "status": [
         "Working",
@@ -136,7 +136,7 @@
     {
       "title": "Pokemon Emerald",
       "core": "mgba",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/EMULATORS/images/pokemonemerald.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/EMULATORS/images/pokemonemerald.jpg",
       "genre": "Action-RPG",
       "type": "EMULATOR",
       "link": "https://cdn.jsdelivr.net/gh/vbaemulator/GBA-Roms@main/Pokemon%20Emerald%20%2B.zip",
@@ -150,7 +150,7 @@
     {
       "title": "Pokemon Fire Red",
       "core": "mgba",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/EMULATORS/images/pokemon-fire-red.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/EMULATORS/images/pokemon-fire-red.jpg",
       "genre": "Action-RPG",
       "type": "EMULATOR",
       "link": "https://cdn.jsdelivr.net/gh/vbaemulator/GBA-Roms@main/Pokemon%20Firered%20251.zip",
@@ -164,7 +164,7 @@
     {
       "title": "Pokemon Crystal",
       "core": "mgba",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/EMULATORS/images/pokemoncrystal.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/EMULATORS/images/pokemoncrystal.jpg",
       "genre": "Action-RPG",
       "type": "EMULATOR",
       "link": "https://cdn.jsdelivr.net/gh/mehransab101/GBC_ROMS@master/Pokemon%20-%20Crystal%20Version%20(UE)%20(V1.1)%20%5BC%5D%5B!%5D.gbc",
@@ -178,7 +178,7 @@
     {
       "title": "Pokemon Red",
       "core": "mgba",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/EMULATORS/images/pokemonred.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/EMULATORS/images/pokemonred.jpg",
       "genre": "Action-RPG",
       "type": "EMULATOR",
       "link": "https://cdn.jsdelivr.net/gh/mehransab101/GBC_ROMS@master/Pokemon%20-%20Red%20Version%20(UE)%5B!%5D.zip",
@@ -192,7 +192,7 @@
     {
       "title": "Pokemon Blue",
       "core": "mgba",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/EMULATORS/images/pokemonblue.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/EMULATORS/images/pokemonblue.jpg",
       "genre": "Action-RPG",
       "type": "EMULATOR",
       "link": "https://cdn.jsdelivr.net/gh/mehransab101/GBC_ROMS@master/pokemon-blue.gb",
@@ -206,7 +206,7 @@
     {
       "title": "Pokemon Gold",
       "core": "mgba",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/EMULATORS/images/pokemongold.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/EMULATORS/images/pokemongold.jpg",
       "genre": "Action-RPG",
       "type": "EMULATOR",
       "link": "https://cdn.jsdelivr.net/gh/mehransab101/GBC_ROMS@master/Pokemon%20-%20Gold%20Version%20(UE)%20%5BC%5D%5B!%5D.gbc",
@@ -220,7 +220,7 @@
     {
       "title": "Pokemon Silver",
       "core": "mgba",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/EMULATORS/images/pokemonsilver.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/EMULATORS/images/pokemonsilver.jpg",
       "genre": "Action-RPG",
       "type": "EMULATOR",
       "link": "https://cdn.jsdelivr.net/gh/mehransab101/GBC_ROMS@master/Pokemon%20-%20Silver%20Version%20(USA%2C%20Europe)%20(SGB%20Enhanced).gbc",
@@ -234,7 +234,7 @@
     {
       "title": "Castlevania - Harmony of Dissonance",
       "core": "mgba",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/EMULATORS/images/harmonyofdissonance.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/EMULATORS/images/harmonyofdissonance.jpg",
       "genre": "Action-RPG",
       "type": "EMULATOR",
       "link": "https://cdn.jsdelivr.net/gh/vbaemulator/GBA-Roms@main/Castlevania%20-%20Harmony%20of%20Dissonance%20(USA).zip",
@@ -247,7 +247,7 @@
     {
       "title": "Jimmy Neutron Boy Genius",
       "core": "mgba",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/EMULATORS/images/jimmyneutronboygenius.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/EMULATORS/images/jimmyneutronboygenius.jpg",
       "genre": "Adventure",
       "type": "EMULATOR",
       "link": "https://cdn.jsdelivr.net/gh/vbaemulator/GBA-Roms@main/Adventures%20of%20Jimmy%20Neutron%20Boy%20Genius%20vs.%20Jimmy%20Negatron%2C%20The%20(USA%2C%20Europe).zip",
@@ -260,7 +260,7 @@
     {
       "title": "Earthbound",
       "core": "snes",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/EMULATORS/images/earthbound.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/EMULATORS/images/earthbound.jpg",
       "genre": "Action-RPG",
       "type": "EMULATOR",
       "link": "https://cyan-assets.vercel.app/EMULATORS/Earthbound/earthbound",
@@ -273,7 +273,7 @@
     },
     {
       "title": "Papa's Burgeria",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/Papa'sBurgeria/papasburgeria_300x300.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/Papa'sBurgeria/papasburgeria_300x300.jpg",
       "genre": "Strategy",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/Papa'sBurgeria/index.html",
@@ -285,7 +285,7 @@
     },
     {
       "title": "Papa's Freezeria",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/Papa'sFreezeria/papasfreezeria_300x300.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/Papa'sFreezeria/papasfreezeria_300x300.jpg",
       "genre": "Strategy",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/Papa'sFreezeria/index.html",
@@ -297,7 +297,7 @@
     },
     {
       "title": "Papa's Pizzeria",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/Papa'sPizzeria/papaspizzeria_100x100.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/Papa'sPizzeria/papaspizzeria_100x100.jpg",
       "genre": "Strategy",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/Papa'sPizzeria/index.html",
@@ -309,7 +309,7 @@
     },
     {
       "title": "Papa's Sushiria",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/Papa'sSushiria/icon_300x300_papassushiria.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/Papa'sSushiria/icon_300x300_papassushiria.jpg",
       "genre": "Strategy",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/Papa'sSushiria/index.html",
@@ -321,7 +321,7 @@
     },
     {
       "title": "Duck Life",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/Duck Life/ducklife.jpeg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/Duck Life/ducklife.jpeg",
       "genre": "Racing",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/Duck Life/index.html",
@@ -333,7 +333,7 @@
     },
     {
       "title": "Duck Life 2",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/Duck%20Life%202/ducklife2.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/Duck%20Life%202/ducklife2.jpg",
       "genre": "Racing",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/Duck%20Life%202/index.html",
@@ -345,7 +345,7 @@
     },
     {
       "title": "Duck Life 3",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/Duck%20Life%203/ducklife3.jfif",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/Duck%20Life%203/ducklife3.jfif",
       "genre": "Racing",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/Duck%20Life%203/index.html",
@@ -357,7 +357,7 @@
     },
     {
       "title": "Duck Life 4",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/Duck%20Life%204/ducklife4.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/Duck%20Life%204/ducklife4.png",
       "genre": "Racing",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/Duck%20Life%204/index.html",
@@ -382,7 +382,7 @@
     },
     {
       "title": "Learn To Fly",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/Learn%20to%20Fly/learntofly.jfif",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/Learn%20to%20Fly/learntofly.jfif",
       "genre": "Simulation",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/Learn%20to%20Fly/index.html",
@@ -394,7 +394,7 @@
     },
     {
       "title": "Learn to Fly 2",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/Learn%202%20Fly/learn2fly.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/Learn%202%20Fly/learn2fly.png",
       "genre": "Simulation",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/Learn%202%20Fly/index.html",
@@ -406,7 +406,7 @@
     },
     {
       "title": "Learn To Fly 3",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/Learn%20to%20Fly%203/learn-to-fly3.jfif",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/Learn%20to%20Fly%203/learn-to-fly3.jfif",
       "genre": "Simulation",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/Learn%20to%20Fly%203/index.html",
@@ -418,7 +418,7 @@
     },
     {
       "title": "Escaping The Prison",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/Escaping%20The%20Prison/etp.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/Escaping%20The%20Prison/etp.png",
       "genre": "Puzzle",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/Escaping%20The%20Prison/index.html",
@@ -430,7 +430,7 @@
     },
     {
       "title": "Happy Wheels",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/Happy%20Wheels/hw.jpeg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/Happy%20Wheels/hw.jpeg",
       "genre": "Platformer",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/Happy%20Wheels/index.html",
@@ -442,7 +442,7 @@
     },
     {
       "title": "Mutilate A Doll 2",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/Mutilate%20A%20Doll%202/mad2.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/Mutilate%20A%20Doll%202/mad2.png",
       "genre": "Sandbox",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/Mutilate%20A%20Doll%202/index.html",
@@ -454,7 +454,7 @@
     },
     {
       "title": "One Chance",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/One%20Chance/oc.webp",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/One%20Chance/oc.webp",
       "genre": "Story",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/One%20Chance/index.html",
@@ -466,7 +466,7 @@
     },
     {
       "title": "QWOP",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/QWOP/qwop.jpeg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/QWOP/qwop.jpeg",
       "genre": "Racing",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/QWOP/index.html",
@@ -478,7 +478,7 @@
     },
     {
       "title": "Run 2",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/Run%202/r2.jpeg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/Run%202/r2.jpeg",
       "genre": "Racing",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/Run%202/index.html",
@@ -490,7 +490,7 @@
     },
     {
       "title": "Simpsons Home",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/Simpsons%20Home/sh.jpeg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/Simpsons%20Home/sh.jpeg",
       "genre": "Sandbox",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/Simpsons%20Home/index.html",
@@ -502,7 +502,7 @@
     },
     {
       "title": "Stealing The Diamond",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/Stealing%20The%20Diamond/std.jpeg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/Stealing%20The%20Diamond/std.jpeg",
       "genre": "Story",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/Stealing%20The%20Diamond/index.html",
@@ -514,7 +514,7 @@
     },
     {
       "title": "Bloons Tower Defense 5",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/BTD5/btd5.jpeg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/BTD5/btd5.jpeg",
       "genre": "Strategy",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/BTD5/index.html",
@@ -526,7 +526,7 @@
     },
     {
       "title": "Dig To China",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/DIgToChina/dtc.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/DIgToChina/dtc.png",
       "genre": "Simulation",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/DIgToChina/index.html",
@@ -538,7 +538,7 @@
     },
     {
       "title": "Fireboy and Watergirl",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/FireBoyandWaterGirl/Fireboywatergirl.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/FireBoyandWaterGirl/Fireboywatergirl.png",
       "genre": "Co-Op",
       "type": "HTML",
       "link": "https://cdn.jsdelivr.net/gh/gameproxy/swf_storage_1@master/Fireboy%20and%20Watergirl.swf",
@@ -550,7 +550,7 @@
     },
     {
       "title": "CSGO Clicker",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/csgo-clicker/230x0w.webp",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/csgo-clicker/230x0w.webp",
       "genre": "Clicker",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/csgo-clicker/index.html",
@@ -562,7 +562,7 @@
     },
     {
       "title": "Cell Machine",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/cell-machine/cm_icon.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/cell-machine/cm_icon.png",
       "genre": "Sandbox",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/cell-machine/index.html",
@@ -574,7 +574,7 @@
     },
     {
       "title": "Achievement Unlocked",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/AchivementUnlocked/achivement1.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/AchivementUnlocked/achivement1.jpg",
       "genre": "Platformer",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/AchivementUnlocked/achievement1",
@@ -587,7 +587,7 @@
     },
     {
       "title": "Achievement Unlocked 2",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/AchivementUnlocked/achivment2.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/AchivementUnlocked/achivment2.jpg",
       "genre": "Platformer",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/AchivementUnlocked/achievement2",
@@ -600,7 +600,7 @@
     },
     {
       "title": "Achievement Unlocked 3",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/AchivementUnlocked/achievement-unlocked-3.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/AchivementUnlocked/achievement-unlocked-3.jpg",
       "genre": "Platformer",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/AchivementUnlocked/achievement3",
@@ -613,7 +613,7 @@
     },
     {
       "title": "Doodle Jump",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/doodle-jump/doodle.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/doodle-jump/doodle.png",
       "genre": "Platformer",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/doodle-jump/index.html",
@@ -625,7 +625,7 @@
     },
     {
       "title": "Gimme the Airpod",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/gimme-the-airpod/img/logo.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/gimme-the-airpod/img/logo.png",
       "genre": "Two-Player",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/gimme-the-airpod/index.html",
@@ -637,7 +637,7 @@
     },
     {
       "title": "Rooftop Snipers",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/rooftop-snipers/img/thumb.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/rooftop-snipers/img/thumb.png",
       "genre": "Two-Player",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/rooftop-snipers/index.html",
@@ -649,7 +649,7 @@
     },
     {
       "title": "circloO",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/circlo/img/download.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/circlo/img/download.png",
       "genre": "Platformer",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/circlo/index.html",
@@ -661,7 +661,7 @@
     },
     {
       "title": "The Heist",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/theheist/theheist.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/theheist/theheist.jpg",
       "genre": "Action",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/theheist/index.html",
@@ -674,7 +674,7 @@
     {
       "title": "Pokemon Unbound",
       "core": "mgba",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/EMULATORS/Pokemon%20Unbound/Unbound.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/EMULATORS/Pokemon%20Unbound/Unbound.png",
       "genre": "Action-RPG",
       "type": "EMULATOR",
       "link": "https://cyan-assets.vercel.app/EMULATORS/Pokemon%20Unbound/POKEMON_UNBOUND.gba",
@@ -699,7 +699,7 @@
     },
     {
       "title": "Buckshot Roulette",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/Buckshot%20Roulette/buckshot-roulette-feature-image.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/Buckshot%20Roulette/buckshot-roulette-feature-image.jpg",
       "genre": "Strategy",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/Buckshot%20Roulette/Buckshot%20Roulette.html",
@@ -711,7 +711,7 @@
     },
     {
       "title": "Deltarune",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/deltarune-main/delta.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-games@main/deltarune-main/delta.png",
       "genre": "RPG",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/deltarune-main/index.html",
@@ -725,7 +725,7 @@
     },
     {
       "title": "Endoparasitic",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/Endoparasitic/endo.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/Endoparasitic/endo.png",
       "genre": "Horror",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/Endoparasitic/Endoparasitic.html",
@@ -737,7 +737,7 @@
     },
     {
       "title": "Half Life",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/hl.webp",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-games@main/hl.webp",
       "genre": "Shooter",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/hl/xash.html",
@@ -750,7 +750,7 @@
     },
     {
       "title": "Hotline Miami",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/Hotline%20Miami/hotline.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/Hotline%20Miami/hotline.jpg",
       "genre": "Shooter",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/hotlineMiami/index.html",
@@ -762,7 +762,7 @@
     },
     {
       "title": "People Playground",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/People%20Playground/pp.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/People%20Playground/pp.jpg",
       "genre": "Sandbox",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/People%20Playground/People%20Playground.html",
@@ -774,7 +774,7 @@
     },
     {
       "title": "Ultrakill",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/ultrakill.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/ultrakill.png",
       "genre": "Shooter",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/ultrakill/index.html",
@@ -787,7 +787,7 @@
     },
     {
       "title": "Undertale",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/Undertale/Untitled.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/Undertale/Untitled.png",
       "genre": "RPG",
       "type": "HTML",
       "link": "https://sulfur-cyanide.vercel.app/a/hvtrs8%2F-wuw%2Cawtksviai%2Copg-bwrlefppoheatq%2FWNFEPTCLG%2F",
@@ -800,7 +800,7 @@
     },
     {
       "title": "Balatro",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/Balatro/bala.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-games@main/Balatro/bala.jpg",
       "genre": "Rougelike",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/Balatro",
@@ -813,7 +813,7 @@
     },
     {
       "title": "Hollow Night",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/hollowNight/hn.webp",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/hollowNight/hn.webp",
       "genre": "Metroidvania",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/hollowNight",
@@ -826,7 +826,7 @@
     },
     {
       "title": "PokeRouge",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/Poke_Rouge/pr.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/Poke_Rouge/pr.png",
       "genre": "Rougelike",
       "type": "HTML",
       "link": "https://pokerogue-cyan.vercel.app",
@@ -838,7 +838,7 @@
     },
     {
       "title": "Riddle School 1",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/RiddleSchool/riddleschool1.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/RiddleSchool/riddleschool1.jpg",
       "genre": "Strategy",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/RiddleSchool/index.html",
@@ -850,7 +850,7 @@
     },
     {
       "title": "Riddle School 2",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/RiddleSchool2/riddleschool2.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/RiddleSchool2/riddleschool2.jpg",
       "genre": "Puzzle",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/RiddleSchool2/index.html",
@@ -862,7 +862,7 @@
     },
     {
       "title": "Riddle School 3",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/RiddleSchool3/riddleschool3.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/RiddleSchool3/riddleschool3.jpg",
       "genre": "Puzzle",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/RiddleSchool3/index.html",
@@ -874,7 +874,7 @@
     },
     {
       "title": "Riddle School 4",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/RiddleSchool4/riddleschool4.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/RiddleSchool4/riddleschool4.jpg",
       "genre": "Puzzle",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/RiddleSchool4/index.html",
@@ -886,7 +886,7 @@
     },
     {
       "title": "Riddle School 5",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/FLASH/RiddleSchool5/riddleschool5.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/FLASH/RiddleSchool5/riddleschool5.jpg",
       "genre": "Puzzle",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/FLASH/RiddleSchool5/index.html",
@@ -898,7 +898,7 @@
     },
     {
       "title": "Banana Saber",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/BTTS/btts.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/BTTS/btts.png",
       "genre": "Platformer",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/BananaSaber/index.html",
@@ -910,7 +910,7 @@
     },
     {
       "title": "Baldi's Basics",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/Baldi/unnamed.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-games@main/Baldi/unnamed.png",
       "genre": "Horror",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/Baldi/index.html",
@@ -975,7 +975,7 @@
     },
     {
       "title": "Just One Boss",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/JustOneBoss/pv1Gr5.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/JustOneBoss/pv1Gr5.png",
       "genre": "Action",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/JustOneBoss/index.html",
@@ -988,7 +988,7 @@
     },
     {
       "title": "Bitlife",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/Bitlife/logo.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-games@main/Bitlife/logo.png",
       "genre": "Simulation",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/Bitlife/index.html",
@@ -1001,7 +1001,7 @@
     },
     {
       "title": "Basket Random",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/BasketRandom/image.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/BasketRandom/image.png",
       "genre": "Two-Player",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/BasketRandom/index.html",
@@ -1380,7 +1380,7 @@
     },
     {
       "title": "Subway Surfers",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/SubwaySurfers/sssf.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/SubwaySurfers/sssf.jpg",
       "genre": "Runner",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/SubwaySurfers/index.html",
@@ -1669,7 +1669,7 @@
     },
     {
       "title": "Level 13",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@f45a796d2931a0edd176366a7d667ad4dffef1f6/UGS/UGS%20Files/lvl13.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@f45a796d2931a0edd176366a7d667ad4dffef1f6/UGS/UGS%20Files/lvl13.png",
       "genre": "Incremental",
       "type": "HTML",
       "link": "https://level13.vercel.app/",
@@ -2006,7 +2006,7 @@
     },
     {
       "title": "Bob The Robber",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/btr.webp",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-games@main/btr.webp",
       "genre": "Story",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/UGS/UGS%20Files/clbobtherobber.html",
@@ -2071,7 +2071,7 @@
     },
     {
       "title": "Pokemon : Team Rocket Editon",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/EMULATORS/images/ptre.webp",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/EMULATORS/images/ptre.webp",
       "genre": "RPG",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/UGS/UGS%20Files/clPokemonrocketedition.html",
@@ -2176,7 +2176,7 @@
     },
     {
       "title": "Binding of Issac",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/Binding%20of%20Issac_%20Wrath%20of%20the%20Lamb/BOI.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/Binding%20of%20Issac_%20Wrath%20of%20the%20Lamb/BOI.png",
       "genre": "Roguelike",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/Binding%20of%20Issac_%20Wrath%20of%20the%20Lamb/Binding%20of%20Issac_%20Wrath%20of%20the%20Lamb",
@@ -2190,7 +2190,7 @@
     },
     {
       "title": "Cave Story",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/Cave%20Story/d2mc6hc-7c80610a-c795-4b00-bc54-b29cec683ec0.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/Cave%20Story/d2mc6hc-7c80610a-c795-4b00-bc54-b29cec683ec0.png",
       "genre": "Metroidvania",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/Cave%20Story/Cave%20Story",
@@ -2204,7 +2204,7 @@
     },
     {
       "title": "Fruit Ninja",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/Fruit%20Ninja/FN.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/Fruit%20Ninja/FN.png",
       "genre": "Action",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/Fruit%20Ninja/Fruit%20Ninja",
@@ -2218,7 +2218,7 @@
     },
     {
       "title": "Gladihoppers",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/Gladihoppers/gladihoppers-min.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/Gladihoppers/gladihoppers-min.jpg",
       "genre": "Fighting",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/Gladihoppers/Gladihoppers",
@@ -2232,7 +2232,7 @@
     },
     {
       "title": "In Stars and Time",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/In%20Stars%20and%20Time/ISAT.webp",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/In%20Stars%20and%20Time/ISAT.webp",
       "genre": "RPG",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/In%20Stars%20and%20Time/In%20Stars%20and%20Time",
@@ -2246,7 +2246,7 @@
     },
     {
       "title": "Look Outside",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/Look%20Outside/LO.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/Look%20Outside/LO.jpg",
       "genre": "RPG",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/Look%20Outside/Look%20Outside",
@@ -2260,7 +2260,7 @@
     },
     {
       "title": "Madness Combat",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/Madness%20Combat_%20Project%20Nexus%20(classic)/MC.webp",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/Madness%20Combat_%20Project%20Nexus%20(classic)/MC.webp",
       "genre": "Action",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/Madness%20Combat_%20Project%20Nexus%20(classic)/Madness%20Combat_%20Project%20Nexus%20(classic)",
@@ -2274,7 +2274,7 @@
     },
     {
       "title": "Meatboy",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/Meatboy/MB.webp",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/Meatboy/MB.webp",
       "genre": "Platformer",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/Meatboy/Meatboy",
@@ -2288,7 +2288,7 @@
     },
     {
       "title": "OMORI",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/OMORI/OMORI.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/OMORI/OMORI.jpg",
       "genre": "RPG",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/OMORI/OMORI",
@@ -2302,7 +2302,7 @@
     },
     {
       "title": "OFF",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/Off/off.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/Off/off.png",
       "genre": "RPG",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/Off/Off",
@@ -2316,7 +2316,7 @@
     },
     {
       "title": "Oneshot",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/Oneshot%20(LEGACY)/OS.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/Oneshot%20(LEGACY)/OS.jpg",
       "genre": "RPG",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/Oneshot%20(LEGACY)/Oneshot%20(LEGACY)",
@@ -2330,7 +2330,7 @@
     },
     {
       "title": "Pizza Tower",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/Pizza%20Tower/PIZZZZA.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/Pizza%20Tower/PIZZZZA.png",
       "genre": "Platformer",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/Pizza%20Tower/Pizza%20Tower",
@@ -2344,7 +2344,7 @@
     },
     {
       "title": "Sonic.EXE",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/Sonic.EXE/SONICEXE.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/Sonic.EXE/SONICEXE.png",
       "genre": "Horror",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/Sonic.EXE/Sonic.EXE",
@@ -2358,7 +2358,7 @@
     },
     {
       "title": "Sort the Court",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/Sort%20the%20Court/sort-the-court.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/Sort%20the%20Court/sort-the-court.jpg",
       "genre": "Simulation",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/Sort%20the%20Court/Sort%20the%20Court",
@@ -2372,7 +2372,7 @@
     },
     {
       "title": "Spelunky",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/Spelunky%20Classic%20HD/SPELUNKY.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/Spelunky%20Classic%20HD/SPELUNKY.png",
       "genre": "Roguelike-Platformer",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/Spelunky%20Classic%20HD/Spelunky%20Classic%20HD",
@@ -2386,7 +2386,7 @@
     },
     {
       "title": "Yume Nikki",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-assets@main/HTML/Yume%20Nikki/YN.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/Yume%20Nikki/YN.jpg",
       "genre": "RPG",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/Yume%20Nikki/Yume%20Nikki",
@@ -2400,7 +2400,7 @@
     },
     {
       "title": "Drift",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-drift/cover.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-games@main/selenite-drift/cover.png",
       "genre": "Racing",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/selenite-drift/index.html",
@@ -2413,7 +2413,7 @@
     },
     {
       "title": "Drift Boss",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-drift-boss/icon.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-games@main/selenite-drift-boss/icon.png",
       "genre": "Racing",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/selenite-drift-boss/index.html",
@@ -2426,7 +2426,7 @@
     },
     {
       "title": "Fleeing the Complex",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-fleeingthecomplex/flee.jpg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-games@main/selenite-fleeingthecomplex/flee.jpg",
       "genre": "Adventure",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/selenite-fleeingthecomplex/index.html",
@@ -2439,7 +2439,7 @@
     },
     {
       "title": "Half-Life 2",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-hl2/cover.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-games@main/selenite-hl2/cover.png",
       "genre": "Shooter",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/selenite-hl2/index.html",
@@ -2452,7 +2452,7 @@
     },
     {
       "title": "Infiltrating the Airship",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-infiltratingtheairship/air.avif",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-games@main/selenite-infiltratingtheairship/air.avif",
       "genre": "Adventure",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/selenite-infiltratingtheairship/index.html",
@@ -2465,7 +2465,7 @@
     },
     {
       "title": "Jetpack Joyride",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-jetpackjoyride/logo.jpeg",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-games@main/selenite-jetpackjoyride/logo.jpeg",
       "genre": "Runner",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/selenite-jetpackjoyride/index.html",
@@ -2478,7 +2478,7 @@
     },
     {
       "title": "Paper Mario",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-papermario/papermario.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-games@main/selenite-papermario/papermario.png",
       "genre": "RPG",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/selenite-papermario/index.html",
@@ -2491,7 +2491,7 @@
     },
     {
       "title": "Rocket League",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-rocketleague/splash.webp",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-games@main/selenite-rocketleague/splash.webp",
       "genre": "Sports",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/selenite-rocketleague/index.html",
@@ -2504,7 +2504,7 @@
     },
     {
       "title": "Snow Rider 3D",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-snowrider3d/snow.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-games@main/selenite-snowrider3d/snow.png",
       "genre": "Racing",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/selenite-snowrider3d/index.html",
@@ -2517,7 +2517,7 @@
     },
     {
       "title": "Super Mario 64",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-supermario64/icon.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-games@main/selenite-supermario64/icon.png",
       "genre": "Platformer",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/selenite-supermario64/index.html",
@@ -2530,7 +2530,7 @@
     },
     {
       "title": "TABS",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-tabs/unnamed.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-games@main/selenite-tabs/unnamed.png",
       "genre": "Strategy",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/selenite-tabs/index.html",
@@ -2543,7 +2543,7 @@
     },
     {
       "title": "The Impossible Quiz",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-theimpossiblequiz/tiq.avif",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-games@main/selenite-theimpossiblequiz/tiq.avif",
       "genre": "Puzzle",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/selenite-theimpossiblequiz/index.html",
@@ -2556,7 +2556,7 @@
     },
     {
       "title": "There Is No Game",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-thereisnogame/ting.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-games@main/selenite-thereisnogame/ting.png",
       "genre": "Puzzle",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/selenite-thereisnogame/index.html",
@@ -2569,7 +2569,7 @@
     },
     {
       "title": "Thirty Dollar Website",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-thirtydollarwebsite/assets/\ud83d\uddff.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-games@main/selenite-thirtydollarwebsite/assets/\ud83d\uddff.png",
       "genre": "Music",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/selenite-thirtydollarwebsite/index.html",
@@ -2582,7 +2582,7 @@
     },
     {
       "title": "Universal Paperclips",
-      "imageSrc": "https://cdn.jsdelivr.net/gh/MemeCake789/cyan-games@main/selenite-universal-paperclips/universal-paperclips.png",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-games@main/selenite-universal-paperclips/universal-paperclips.png",
       "genre": "Incremental",
       "type": "HTML",
       "link": "https://cyan-assets.vercel.app/HTML/selenite-universal-paperclips/index.html",

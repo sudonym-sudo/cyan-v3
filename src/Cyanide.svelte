@@ -87,7 +87,7 @@
 
         try {
             const response = await fetch(
-                "https://raw.githubusercontent.com/MemeCake789/cyan-v3/main/games.json",
+                "https://raw.githubusercontent.com/sudonym-sudo/cyan-v3/main/games.json",
             );
             if (!response.ok) {
                 throw new Error("Failed to fetch games list");
