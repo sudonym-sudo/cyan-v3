@@ -4,16 +4,26 @@ import { viteSingleFile } from "vite-plugin-singlefile"
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [svelte(), viteSingleFile()],
+  plugins: [
+    svelte(),
+    viteSingleFile(),
+    {
+      name: 'suppress-epoxy-warning',
+      transform(code, id) {
+        if (id.includes('epoxy-transport')) {
+          return code.replace(
+            'new URL("epoxy.wasm", import.meta.url)',
+            'new URL(/* @vite-ignore */ "epoxy.wasm", import.meta.url)'
+          );
+        }
+      }
+    }
+  ],
   build: {
     rollupOptions: {
       input: {
         app: './index.html'
-      },
-      onwarn(warning, warn) {
-        if (warning.code === 'ASSET_NOT_FOUND' && warning.message.includes('epoxy.wasm')) return;
-        warn(warning);
-      },
+      }
     }
   },
   server: {
@@ -27,5 +37,3 @@ export default defineConfig({
     },
   },
 })
-
-

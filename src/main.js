@@ -1,7 +1,6 @@
 import { mount } from 'svelte'
 import 'katex/dist/katex.min.css'; // KaTeX CSS for math rendering
 import './app.css'
-import EpoxyTransport from "@mercuryworkshop/epoxy-transport";
 
 // global proxy for testing/about:blank environments
 async function initGlobalProxy() {
@@ -25,6 +24,7 @@ async function initGlobalProxy() {
 
     console.log("[proxy] initializing epoxy for restricted environment (" + (window.location.protocol || "about:blank") + ")...");
     try {
+        const { default: EpoxyTransport } = await import("@mercuryworkshop/epoxy-transport");
         const transport = new EpoxyTransport({ 
             wisp: "wss://fastforwarder.org/wisp/",
             wasm: "https://unpkg.com/@mercuryworkshop/epoxy-transport/dist/epoxy.wasm" 
@@ -120,11 +120,14 @@ async function initGlobalProxy() {
     }
 }
 
-// Dynamic import: App (and firebase.ts) must load AFTER proxy patches are applied,
+// App must load AFTER proxy patches are applied,
 // otherwise Firestore connects before fetch is intercepted.
-initGlobalProxy().then(async () => {
+async function initApp() {
+    await initGlobalProxy();
     const { default: App } = await import('./App.svelte');
     mount(App, {
         target: document.getElementById('app'),
     })
-});
+}
+
+initApp();

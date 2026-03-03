@@ -31,10 +31,19 @@ const isRestricted =
     window.location.hostname.includes("googleusercontent.com") ||
     !window.location.host);
 
-export const db = isRestricted
-  ? initializeFirestore(app, {
-    experimentalForceLongPolling: true,
-    experimentalAutoDetectLongPolling: true,
-    localCache: memoryLocalCache(),
-  })
-  : getFirestore(app);
+function getDb() {
+  if (isRestricted) {
+    try {
+      return initializeFirestore(app, {
+        experimentalForceLongPolling: true,
+        localCache: memoryLocalCache(),
+      });
+    } catch (e) {
+      console.error("[firebase] failed to initialize restricted firestore:", e);
+      return getFirestore(app);
+    }
+  }
+  return getFirestore(app);
+}
+
+export const db = getDb();
