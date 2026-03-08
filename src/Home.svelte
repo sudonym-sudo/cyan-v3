@@ -1,7 +1,22 @@
 <script lang="ts">
     import { createEventDispatcher, onMount, onDestroy } from "svelte";
+    import {
+        shouldShowNotification,
+        dismissNotification,
+    } from "./notification";
 
     const dispatch = createEventDispatcher();
+
+    let showSulfurNotification = false;
+
+    onMount(() => {
+        showSulfurNotification = shouldShowNotification();
+    });
+
+    function handleDismissNotification() {
+        dismissNotification();
+        showSulfurNotification = false;
+    }
 
     // Apps Data
     // Apps Data
@@ -79,6 +94,24 @@
 
 <div class="home-container">
     <div class="content-width">
+        {#if showSulfurNotification}
+            <div class="notification-banner">
+                <div class="notification-content">
+                    <span class="notification-icon">✓</span>
+                    <span class="notification-text">
+                        <strong>! Sulfur is now fixed !</strong>
+                    </span>
+                </div>
+                <button
+                    class="notification-dismiss"
+                    on:click={handleDismissNotification}
+                    title="dismiss"
+                >
+                    ×
+                </button>
+            </div>
+        {/if}
+
         <section class="apps-grid">
             {#each apps as app}
                 <button
@@ -249,5 +282,78 @@
 
     .arrow {
         color: var(--text-muted);
+    }
+
+    /* Notification Banner */
+    .notification-banner {
+        background: var(--accent-cyan-dim);
+        border: 1px solid var(--accent-cyan);
+        border-radius: var(--border-radius);
+        padding: 12px 16px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .notification-content {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-grow: 1;
+    }
+
+    .notification-icon {
+        background: var(--accent-cyan);
+        color: #000;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: bold;
+        flex-shrink: 0;
+    }
+
+    .notification-text {
+        font-size: 13px;
+        color: var(--text-primary);
+    }
+
+    .notification-text strong {
+        color: var(--accent-cyan);
+    }
+
+    .notification-dismiss {
+        background: transparent;
+        border: none;
+        color: var(--text-muted);
+        cursor: pointer;
+        font-size: 18px;
+        line-height: 1;
+        padding: 4px 8px;
+        border-radius: 4px;
+        transition: all 0.2s;
+        flex-shrink: 0;
+    }
+
+    .notification-dismiss:hover {
+        color: var(--text-primary);
+        background: rgba(255, 255, 255, 0.1);
     }
 </style>

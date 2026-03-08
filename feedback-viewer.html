@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyanv3 Feedback Viewer</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #000000;
+            --surface-color: #111111;
+            --surface-hover: #1a1a1a;
+            --border-color: #333333;
+            --border-subtle: #222222;
+            --text-primary: #ededed;
+            --text-secondary: #888888;
+            --text-muted: #555555;
+            --accent-cyan: #50e3c2;
+            --accent-cyan-dim: rgba(80, 227, 194, 0.1);
+            --accent-error: #ff0033;
+            --accent-warning: #f5a623;
+            --font-mono: 'DM Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 13px;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--text-muted);
+            color: var(--text-primary);
+        }
+
+        .filter-btn.active {
+            background: var(--accent-cyan);
+            color: #000;
+            border-color: var(--accent-cyan);
+        }
+
+        .filter-btn.bug.active {
+            background: var(--accent-error);
+            border-color: var(--accent-error);
+            color: #fff;
+        }
+
+        .filter-btn.request.active {
+            background: var(--accent-warning);
+            border-color: var(--accent-warning);
+            color: #000;
+        }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            font-size: 12px;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+        }
+
+        .stat-value {
+            font-weight: 500;
+        }
+
+        .stat-value.bugs {
+            color: var(--accent-error);
+        }
+
+        .stat-value.requests {
+            color: var(--accent-warning);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+        }
+
+        .error {
+            background: rgba(255, 0, 51, 0.1);
+            border: 1px solid var(--accent-error);
+            color: var(--accent-error);
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .feedback-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .feedback-item {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 15px;
+            transition: border-color 0.2s;
+        }
+
+        .feedback-item:hover {
+            border-color: var(--border-subtle);
+        }
+
+        .feedback-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .feedback-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feedback-type {
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .feedback-type.bug {
+            background: var(--accent-error);
+            color: #fff;
+        }
+
+        .feedback-type.request {
+            background: var(--accent-warning);
+            color: #000;
+        }
+
+        .feedback-user {
+            color: var(--accent-cyan);
+            font-weight: 500;
+        }
+
+        .feedback-time {
+            color: var(--text-muted);
+            font-size: 11px;
+        }
+
+        .feedback-content {
+            color: var(--text-primary);
+            word-break: break-word;
+            white-space: pre-wrap;
+        }
+
+        .feedback-useragent {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border-subtle);
+            font-size: 10px;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+        }
+
+        .empty-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            opacity: 0.3;
+        }
+
+        .refresh-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent-cyan);
+            color: #000;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s, opacity 0.2s;
+            font-family: var(--font-mono);
+        }
+
+        .refresh-btn:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .refresh-btn:active {
+            transform: scale(0.95);
+        }
+
+        .refresh-btn.spinning {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .id-link {
+            color: var(--text-muted);
+            font-size: 10px;
+            text-decoration: none;
+            font-family: monospace;
+        }
+
+        .id-link:hover {
+            color: var(--accent-cyan);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐛 Cyanv3 Feedback Viewer</h1>
+            <p class="subtitle">Bug reports and game requests from users</p>
+        </header>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all" onclick="setFilter('all')">All</button>
+            <button class="filter-btn bug" data-filter="bug" onclick="setFilter('bug')">🐛 Bugs</button>
+            <button class="filter-btn request" data-filter="request" onclick="setFilter('request')">🎮 Game Requests</button>
+        </div>
+
+        <div class="stats" id="stats">
+            <div class="stat">
+                <span class="stat-label">Total:</span>
+                <span class="stat-value" id="total-count">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Bugs:</span>
+                <span class="stat-value bugs" id="bug-count">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Requests:</span>
+                <span class="stat-value requests" id="request-count">0</span>
+            </div>
+        </div>
+
+        <div id="content">
+            <div class="loading">Connecting to Nostr relays...</div>
+        </div>
+    </div>
+
+    <button class="refresh-btn" id="refresh-btn" onclick="loadFeedback()" title="Refresh">↻</button>
+
+    <script type="module">
+        // nostr-tools from CDN
+        import { SimplePool } from 'https://esm.sh/nostr-tools@2.23.3';
+
+        // Simple hash function
+        function stringToBytes(str) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(str);
+            const result = new Uint8Array(32);
+            
+            for (let i = 0; i < 32; i++) {
+                let val = i;
+                for (let j = 0; j < data.length; j++) {
+                    val = ((val * 31) + data[j] + (j * 137)) & 0xff;
+                }
+                result[i] = val;
+            }
+            
+            return result;
+        }
+
+        function bytesToHex(bytes) {
+            return Array.from(bytes)
+                .map(b => b.toString(16).padStart(2, '0'))
+                .join('');
+        }
+
+        const CHANNEL_NAME = 'cyanv3-feedback';
+        const CHANNEL_ID = bytesToHex(stringToBytes(CHANNEL_NAME));
+
+        const RELAYS = [
+            'wss://relay.damus.io',
+            'wss://relay.snort.social',
+            'wss://nos.lol',
+            'wss://nostr.mom',
+            'wss://relay.primal.net',
+            'wss://nostr.bitcoiner.social'
+        ];
+
+        const pool = new SimplePool();
+        let allFeedback = [];
+        let currentFilter = 'all';
+
+        function parseEvent(event) {
+            let content;
+            try {
+                content = JSON.parse(event.content);
+            } catch {
+                content = { type: 'bug', text: event.content, user: 'unknown' };
+            }
+
+            return {
+                id: event.id,
+                type: content.type || 'bug',
+                text: content.text || event.content,
+                user: content.user || 'anonymous',
+                userAgent: content.userAgent,
+                timestamp: new Date(event.created_at * 1000).toISOString(),
+                createdAt: event.created_at
+            };
+        }
+
+        function formatTime(iso) {
+            const date = new Date(iso);
+            const now = new Date();
+            const diff = now - date;
+            
+            if (diff < 60000) return 'just now';
+            if (diff < 3600000) return `${Math.floor(diff / 60000)}m ago`;
+            if (diff < 86400000) return `${Math.floor(diff / 3600000)}h ago`;
+            return date.toLocaleDateString();
+        }
+
+        function renderFeedback() {
+            const content = document.getElementById('content');
+            const filtered = currentFilter === 'all' 
+                ? allFeedback 
+                : allFeedback.filter(f => f.type === currentFilter);
+
+            if (filtered.length === 0) {
+                content.innerHTML = `
+                    <div class="empty">
+                        <div class="empty-icon">📭</div>
+                        <p>No ${currentFilter === 'all' ? '' : currentFilter + ' '}feedback found</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Sort by newest first
+            const sorted = [...filtered].sort((a, b) => b.createdAt - a.createdAt);
+
+            content.innerHTML = sorted.map(item => `
+                <div class="feedback-item">
+                    <div class="feedback-header">
+                        <div class="feedback-meta">
+                            <span class="feedback-type ${item.type}">${item.type === 'bug' ? '🐛 Bug' : '🎮 Request'}</span>
+                            <span class="feedback-user">${escapeHtml(item.user)}</span>
+                            <span class="feedback-time">${formatTime(item.timestamp)}</span>
+                        </div>
+                        <a href="https://nostr.com/e/${item.id}" target="_blank" class="id-link" title="View on Nostr">
+                            ${item.id.slice(0, 8)}...
+                        </a>
+                    </div>
+                    <div class="feedback-content">${escapeHtml(item.text)}</div>
+                    ${item.userAgent ? `<div class="feedback-useragent">${escapeHtml(item.userAgent)}</div>` : ''}
+                </div>
+            `).join('');
+
+            updateStats();
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function updateStats() {
+            document.getElementById('total-count').textContent = allFeedback.length;
+            document.getElementById('bug-count').textContent = allFeedback.filter(f => f.type === 'bug').length;
+            document.getElementById('request-count').textContent = allFeedback.filter(f => f.type === 'request').length;
+        }
+
+        async function loadFeedback() {
+            const refreshBtn = document.getElementById('refresh-btn');
+            refreshBtn.classList.add('spinning');
+            
+            document.getElementById('content').innerHTML = '<div class="loading">Loading feedback from Nostr relays...</div>';
+            
+            try {
+                const filter = {
+                    kinds: [42],
+                    '#e': [CHANNEL_ID],
+                    limit: 200
+                };
+
+                const events = await pool.querySync(RELAYS, filter);
+                allFeedback = events.map(parseEvent);
+                
+                renderFeedback();
+            } catch (err) {
+                console.error('Failed to load feedback:', err);
+                document.getElementById('content').innerHTML = `
+                    <div class="error">
+                        Failed to load feedback from Nostr relays. <br>
+                        Error: ${escapeHtml(err.message)}
+                    </div>
+                `;
+            } finally {
+                refreshBtn.classList.remove('spinning');
+            }
+        }
+
+        // Expose functions globally
+        window.setFilter = (filter) => {
+            currentFilter = filter;
+            
+            // Update button states
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.filter === filter);
+            });
+            
+            renderFeedback();
+        };
+
+        window.loadFeedback = loadFeedback;
+
+        // Load on startup
+        loadFeedback();
+
+        // Auto-refresh every 30 seconds
+        setInterval(loadFeedback, 30000);
+    </script>
+</body>
+</html>

@@ -1,29 +1,38 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { getMessages, sendMessage as apiSendMessage } from "./chatApi";
     import { username as usernameStore } from "./stores";
+    import { 
+        subscribeToMessages, 
+        sendMessage as nostrSendMessage, 
+        parseMessageEvent,
+        closePool
+    } from "./nostr";
+    import type { Event } from "nostr-tools";
 
     const MAX_MESSAGE_LENGTH = 200;
     const MAX_REPLY_MESSAGE_PREVIEW_LENGTH = 100;
 
-    let messages: {
+    // Message interface matching nostr event format
+    interface Message {
+        id: string;
         text: string;
         user: string;
         timestamp: string;
         replyTo?: string;
         isOwner?: boolean;
-        id?: string;
-    }[] = [];
+        createdAt: number; // Unix timestamp for sorting
+    }
 
+    let messages: Message[] = [];
     let newMessage = "";
     let chatContainer: HTMLDivElement;
     let username = "anonymous-" + Math.floor(Math.random() * 10000);
-    let unsubscribe: () => void = () => {};
-    let batchSize = 50;
+    let unsubscribe: (() => void) | null = null;
+    let isLoading = true;
+    let hasLoadedInitial = false;
 
-    let replyToIndex: number | null = null;
-    let isLoadingMore = false;
-    let previousHeight = 0;
+    let replyToId: string | null = null;
+    let replyToUser: string | null = null;
     let expandedMessages = new Map<number, boolean>();
 
     $: if (typeof $usernameStore === "string" && $usernameStore.trim()) {
@@ -35,19 +44,12 @@
         expandedMessages = expandedMessages;
     }
 
-    function loadMoreMessages() {
-        if (chatContainer) previousHeight = chatContainer.scrollHeight;
-        isLoadingMore = true;
-        batchSize += 50;
-        subscribeToMessages();
-    }
-
     function formatTimestamp(iso: string) {
         if (!iso) return "";
         return new Date(iso).toLocaleTimeString([], {
             hour: "2-digit",
             minute: "2-digit",
-            hour12: false, // 24h format for terminal feel
+            hour12: false,
         });
     }
 
@@ -57,130 +59,139 @@
             hash = str.charCodeAt(i) + ((hash << 5) - hash);
         }
         const hue = (hash * 137) % 360;
-        return `hsl(${hue}, 60%, 65%)`; // Slightly desaturated for TUI
+        return `hsl(${hue}, 60%, 65%)`;
     }
 
-    function processMessage(msg: {
-        text: string;
-        user: string;
-        timestamp: string;
-        replyTo?: string;
-        isOwner?: boolean;
-        id?: string;
-    }) {
+    function processMessage(msg: Message): Message {
         // --- SUDO COMMAND LOGIC ---
-        // Verify if the message text starts with "sudo " (case-sensitive or insensitive? Let's do sensitive for strictness)
         if (msg.text.startsWith("sudo ")) {
             return {
                 ...msg,
-                text: msg.text.slice(5), // Remove "sudo "
+                text: msg.text.slice(5),
                 isOwner: true,
             };
         }
         return { ...msg, isOwner: false };
     }
 
-    function scrollToMessage(idx: number) {
-        const el = document.getElementById(`message-${idx}`);
-        if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+    function handleNostrEvent(event: Event) {
+        const parsed = parseMessageEvent(event);
+        
+        // Check if message already exists
+        if (messages.some(m => m.id === parsed.id)) {
+            return;
+        }
+
+        const message: Message = {
+            id: parsed.id,
+            text: parsed.text,
+            user: parsed.user,
+            timestamp: parsed.timestamp,
+            replyTo: parsed.replyTo,
+            createdAt: event.created_at
+        };
+
+        // Add message and sort by created_at (oldest first, newest at bottom)
+        messages = [...messages, message].sort((a, b) => a.createdAt - b.createdAt);
+        
+        // Scroll to bottom for new messages (only if already near bottom)
+        setTimeout(() => {
+            if (chatContainer) {
+                const isNearBottom = chatContainer.scrollHeight - chatContainer.scrollTop - chatContainer.clientHeight < 100;
+                if (isNearBottom) {
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                }
+            }
+        }, 10);
     }
 
-    function getMessageIndexById(id: string): number {
-        return messages.findIndex((m) => m.id === id);
-    }
-
-    function getMessageById(id: string) {
+    function getMessageById(id: string): Message | undefined {
         return messages.find((m) => m.id === id);
     }
 
     async function sendMessage() {
         if (!newMessage.trim()) return;
-        const payload = {
-            text: newMessage,
-            user: username,
-            replyTo: replyToIndex,
-        };
-        const keep = newMessage;
+
+        const text = newMessage;
         newMessage = "";
 
         try {
-            const replyId =
-                payload.replyTo !== null && messages[payload.replyTo]
-                    ? messages[payload.replyTo].id
-                    : undefined;
-            await apiSendMessage(payload.text, payload.user, replyId);
+            await nostrSendMessage(text, username, replyToId || undefined);
+            replyToId = null;
+            replyToUser = null;
         } catch (e) {
+            console.error("[sulfur] failed to send message:", e);
             alert("Message failed to send!");
-            newMessage = keep;
-            return;
+            newMessage = text;
         }
-
-        replyToIndex = null;
     }
 
-    function subscribeToMessages() {
-        if (unsubscribe) unsubscribe();
-        unsubscribe = getMessages((newMsgs) => {
-            messages = newMsgs;
-            setTimeout(() => {
-                if (!chatContainer) return;
-                if (isLoadingMore) {
-                    const newHeight = chatContainer.scrollHeight;
-                    chatContainer.scrollTop = newHeight - previousHeight;
-                    isLoadingMore = false;
-                } else {
-                    chatContainer.scrollTop = chatContainer.scrollHeight;
-                }
-            }, 50);
-        }, batchSize);
+    function startSubscription() {
+        if (unsubscribe) {
+            unsubscribe();
+        }
+
+        isLoading = true;
+        hasLoadedInitial = false;
+        
+        unsubscribe = subscribeToMessages(
+            handleNostrEvent,
+            () => {
+                isLoading = false;
+                hasLoadedInitial = true;
+                // Scroll to bottom after initial load
+                setTimeout(() => {
+                    if (chatContainer) {
+                        chatContainer.scrollTop = chatContainer.scrollHeight;
+                    }
+                }, 100);
+            }
+        );
     }
 
     onMount(() => {
-        const handleVis = () => {
-            if (!document.hidden) {
-                subscribeToMessages();
-            } else if (unsubscribe) {
-                unsubscribe();
-            }
-        };
-        document.addEventListener("visibilitychange", handleVis);
-        handleVis();
+        startSubscription();
 
         return () => {
-            if (unsubscribe) unsubscribe();
-            document.removeEventListener("visibilitychange", handleVis);
+            if (unsubscribe) {
+                unsubscribe();
+                unsubscribe = null;
+            }
+            closePool();
         };
     });
+
+    function setReplyTo(id: string | null, user: string | null = null) {
+        replyToId = id;
+        replyToUser = user;
+    }
 </script>
 
 <div class="sulfur-container">
     <div class="header">
-        <span class="channel-name"># public-chat</span>
+        <span class="channel-name"># cyanv3-chat</span>
         <div class="user-block">
             <span>user:</span>
             <input
                 type="text"
                 bind:value={$usernameStore}
                 class="username-input"
+                placeholder="set username..."
             />
         </div>
     </div>
 
     <div class="chat-history" bind:this={chatContainer}>
-        <div
-            class="load-more"
-            on:click={loadMoreMessages}
-            on:keypress={(e) => e.key === "Enter" && loadMoreMessages()}
-            role="button"
-            tabindex="0"
-        >
-            -- load more --
-        </div>
+        {#if isLoading && messages.length === 0}
+            <div class="message-line system">
+                <span class="content">Connecting to Nostr relays...</span>
+            </div>
+        {/if}
 
-        {#each messages as msg, i (i)}
+        {#each messages as msg, i (msg.id)}
             {@const processed = processMessage(msg)}
             <div
-                id={"message-" + i}
+                id={"message-" + msg.id}
                 class="message-line"
                 class:owner-line={processed.isOwner}
             >
@@ -214,10 +225,10 @@
                             <!-- svelte-ignore a11y_no_static_element_interactions -->
                             <span
                                 class="reply-ref"
-                                on:click={() =>
-                                    scrollToMessage(
-                                        getMessageIndexById(msg.replyTo),
-                                    )}
+                                on:click={() => {
+                                    const el = document.getElementById("message-" + msg.replyTo);
+                                    if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+                                }}
                                 >{replied.text.length >
                                 MAX_REPLY_MESSAGE_PREVIEW_LENGTH
                                     ? `${replied.text.slice(0, MAX_REPLY_MESSAGE_PREVIEW_LENGTH)}(...)`
@@ -248,29 +259,34 @@
                 </span>
 
                 <!-- Actions -->
-                <button class="reply-btn" on:click={() => (replyToIndex = i)}
+                <button class="reply-btn" on:click={() => setReplyTo(msg.id, processed.user)}
                     >reply</button
                 >
             </div>
         {:else}
-            <div class="message-line system">
-                <span class="content"
-                    >No messages yet. Start the conversation!</span
-                >
-            </div>
+            {#if !isLoading}
+                <div class="message-line system">
+                    <span class="content"
+                        >No messages yet. Start the conversation!</span
+                    >
+                </div>
+            {/if}
         {/each}
     </div>
 
-    {#if replyToIndex !== null && messages[replyToIndex]}
-        {@const preview = processMessage(messages[replyToIndex])}
-        <div class="reply-preview-bar">
-            <span
-                >replying to <strong>{preview.user}</strong>: {preview.text}</span
-            >
-            <button class="cancel-reply" on:click={() => (replyToIndex = null)}
-                >✖</button
-            >
-        </div>
+    {#if replyToId}
+        {@const preview = getMessageById(replyToId)}
+        {#if preview}
+            {@const processed = processMessage(preview)}
+            <div class="reply-preview-bar">
+                <span
+                    >replying to <strong>{processed.user}</strong>: {processed.text.length > 50 ? processed.text.slice(0, 50) + '...' : processed.text}</span
+                >
+                <button class="cancel-reply" on:click={() => setReplyTo(null)}
+                    >✖</button
+                >
+            </div>
+        {/if}
     {/if}
 
     <div class="input-area">
@@ -278,7 +294,7 @@
         <input
             type="text"
             bind:value={newMessage}
-            placeholder="SendMessage..."
+            placeholder="Send message..."
             on:keydown={(e) => e.key === "Enter" && sendMessage()}
             class="chat-input-field"
         />
@@ -327,7 +343,7 @@
         border: none;
         border-bottom: 1px solid var(--border-subtle);
         color: var(--accent-cyan);
-        width: 100px;
+        width: 120px;
         text-align: right;
         font-family: var(--font-mono);
     }
@@ -346,18 +362,6 @@
         gap: 4px;
     }
 
-    .load-more {
-        text-align: center;
-        cursor: pointer;
-        color: var(--text-muted);
-        font-size: 11px;
-        padding: 5px;
-        opacity: 0.8;
-    }
-    .load-more:hover {
-        opacity: 1;
-    }
-
     .message-line {
         display: flex;
         align-items: baseline;
@@ -373,6 +377,11 @@
 
     .message-line:hover .reply-btn {
         opacity: 0.5;
+    }
+
+    .message-line.system {
+        opacity: 0.6;
+        font-style: italic;
     }
 
     .timestamp {
@@ -421,6 +430,10 @@
         cursor: pointer;
     }
 
+    .reply-ref:hover {
+        background-color: var(--border-color);
+    }
+
     .reply-btn {
         opacity: 0;
         background: transparent;
@@ -453,19 +466,11 @@
         border: none;
         color: var(--text-muted);
         cursor: pointer;
-        .show-more-less {
-            background: none;
-            border: none;
-            color: var(--accent-cyan);
-            cursor: pointer;
-            font-size: 11px;
-            margin-left: 10px;
-            padding: 0;
-            text-decoration: underline;
-        }
-        .show-more-less:hover {
-            color: var(--accent-cyan-dim);
-        }
+        font-size: 14px;
+    }
+
+    .cancel-reply:hover {
+        color: var(--accent-error);
     }
 
     .input-area {
@@ -533,5 +538,9 @@
     .show-more-less:hover {
         opacity: 1;
         text-decoration: underline;
+    }
+
+    .owner-line {
+        background-color: rgba(80, 227, 194, 0.05);
     }
 </style>
