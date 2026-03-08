@@ -27,7 +27,7 @@ function bytesToHex(bytes: Uint8Array): string {
 }
 
 // Cyanv3 specific channel - deterministic ID
-const CHANNEL_NAME = 'cyanv3-public-chat';
+const CHANNEL_NAME = 'cyanv3-public-chat1';
 const CHANNEL_ID = bytesToHex(stringToBytes(CHANNEL_NAME));
 
 // Relay pool - reliable relays (removed restrictive ones)
