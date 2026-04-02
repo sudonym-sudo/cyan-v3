@@ -2004,10 +2004,20 @@
       "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets/HTML/FNAE/fnae.jpeg",
       "genre": "Horror",
       "type": "HTML",
-      "link": "https://cyan-assets.vercel.app/HTML/FNAE/fnae",
+      "link": "https://cyan-assets.vercel.app/HTML/5NIGHTSINEPSTIENS",
       "description": "",
       "status": ["Working", "This game has no issues :D"],
-      "dateAdded": "2026-03-30"
+      "dateFixed": "2026-04-01"
+    },
+    {
+      "title": "Jojo's Bizarre Adventure Heritage For the Future",
+      "imageSrc": "https://cdn.jsdelivr.net/gh/sudonym-sudo/cyan-assets@main/HTML/JJBA/JJBA_HFTF.jpg",
+      "genre": "Action",
+      "type": "HTML",
+      "link": "https://cyan-assets.vercel.app/HTML/JJBA",
+      "description": "",
+      "status": ["Working", "This game has no issues :D"],
+      "dateAdded": "2026-04-01"
     }
   ]
 }
