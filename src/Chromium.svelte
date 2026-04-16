@@ -1,18 +1,12 @@
 <script lang="ts">
     import { createEventDispatcher, onDestroy, onMount } from "svelte";
-    import EpoxyTransport from "@mercuryworkshop/epoxy-transport";
-    import { connectWisp } from "./wispEndpoints.js";
 
     export let currentUrl = "";
 
     let inputUrl = "";
     let iframeElement: HTMLIFrameElement | null = null;
     let iframeContainer: HTMLDivElement;
-    let hasAcceptedWarning = false;
-    let proxyReady = false;
-    let transport: EpoxyTransport | null = null;
     let isLoading = false;
-    let connectionError = "";
 
     const dispatch = createEventDispatcher();
 
@@ -34,25 +28,7 @@
         return finalUrl;
     }
 
-    async function initProxyEngine() {
-        if (proxyReady) return;
-        connectionError = "";
-
-        try {
-            const result = await connectWisp(EpoxyTransport);
-            transport = result.transport;
-            proxyReady = true;
-            if (hasAcceptedWarning) {
-                initializeChromium();
-            }
-        } catch (err) {
-            connectionError = "all wisp endpoints failed. the proxy server may be down.";
-            console.error("[proxy] all wisp endpoints exhausted");
-        }
-    }
-
     onMount(() => {
-        initProxyEngine();
         window.addEventListener("message", handleIframeMessage);
     });
 
@@ -80,37 +56,11 @@
         } else if (event.data.type === "url-update") {
             inputUrl = event.data.url;
             currentUrl = event.data.url;
-        } else if (event.data.type === "fetch-request") {
-            const { id, url, method, headers, body } = event.data;
-            if (!transport) return;
-            try {
-                const headObj = new Headers();
-                if (headers) Object.entries(headers).forEach(([k, v]) => headObj.set(k, v as string));
-                const response = await transport.request(new URL(url), method, body, headObj);
-                const respHeaders: Record<string, string> = {};
-                if (response.headers) {
-                    if (Array.isArray(response.headers)) response.headers.forEach(([k, v]) => respHeaders[k] = v);
-                    else Object.entries(response.headers).forEach(([k, v]) => respHeaders[k] = v as string);
-                }
-                const resp = new Response(response.body);
-                const bodyBuffer = await resp.arrayBuffer();
-                iframeElement?.contentWindow?.postMessage({
-                    type: "fetch-response", id, status: response.status, headers: respHeaders, body: bodyBuffer
-                }, "*", [bodyBuffer]);
-            } catch (err) {
-                iframeElement?.contentWindow?.postMessage({ type: "fetch-response", id, error: String(err) }, "*");
-            }
         }
     }
 
-    function acceptWarning() {
-        hasAcceptedWarning = true;
-        if (proxyReady) initializeChromium();
-        else if (connectionError) initProxyEngine();
-    }
-
     function initializeChromium() {
-        if (!iframeContainer || iframeElement || !proxyReady) return;
+        if (!iframeContainer || iframeElement) return;
         iframeElement = document.createElement("iframe");
         iframeElement.title = "Chromium Proxy";
         iframeElement.style.width = "100%";
@@ -123,7 +73,7 @@
         navigate("cyan:newtab");
     }
 
-    $: if (hasAcceptedWarning && iframeContainer && !iframeElement && proxyReady) {
+    $: if (iframeContainer && !iframeElement) {
         initializeChromium();
     }
 
@@ -133,12 +83,13 @@
 
     function handleKeydown(e: KeyboardEvent) { if (e.key === "Enter") navigate(inputUrl); }
 
-    async function navigate(url: string, redirectCount = 0) {
-        if (redirectCount > 5) return;
+    const PROXY_URL = "https://reds-exploit-corner.examprepare.help/embed.html#";
+
+    async function navigate(url: string) {
         let finalUrl = formatUrl(url);
         inputUrl = finalUrl === "cyan:newtab" ? "" : finalUrl;
         currentUrl = finalUrl;
-        if (!iframeElement || !transport) return;
+        if (!iframeElement) return;
         isLoading = true;
 
         if (finalUrl === "cyan:newtab") {
@@ -166,146 +117,41 @@
                 <\/script>
             </body>
             </html>`;
+            iframeElement.src = "";
             iframeElement.srcdoc = landingPage;
             isLoading = false;
             return;
         }
 
-        if (redirectCount === 0) {
-            iframeElement.srcdoc = `<html><body style="background:#202124; display:flex; align-items:center; justify-content:center; height:100vh;"><h3 style="color:white; font-family:monospace;">loading ${finalUrl}...</h3></body></html>`;
-        }
-
-        try {
-            const target = new URL(finalUrl);
-            const response = await transport.request(target, "GET", null, new Headers({ "User-Agent": navigator.userAgent, "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8" }), undefined);
-            const respHeaders = new Headers();
-            if (response.headers) {
-                if (Array.isArray(response.headers)) response.headers.forEach(([k, v]) => respHeaders.set(k, v));
-                else Object.entries(response.headers).forEach(([k, v]) => respHeaders.set(k, v));
-            }
-            if (response.status >= 300 && response.status < 400) {
-                const location = respHeaders.get("location");
-                if (location) return navigate(new URL(location, finalUrl).href, redirectCount + 1);
-            }
-            let htmlText = "";
-            const contentType = respHeaders.get("content-type") || "";
-            if (response.body instanceof Blob) htmlText = await response.body.text();
-            else if (response.body instanceof ReadableStream) {
-                const reader = response.body.getReader();
-                const decoder = new TextDecoder();
-                while (true) {
-                    const { done, value } = await reader.read();
-                    if (done) break;
-                    htmlText += decoder.decode(value, { stream: true });
-                }
-            } else htmlText = new TextDecoder().decode(await new Response(response.body).arrayBuffer());
-
-            if (!contentType.includes("text/html")) {
-                const blob = new Blob([response.body], { type: contentType });
-                htmlText = `<html><body style="margin:0; background:#202124; display:flex; align-items:center; justify-content:center; height:100vh;"><img src="${URL.createObjectURL(blob)}" style="max-width:100%; max-height:100%;"></body></html>`;
-            } else {
-                const baseTag = `<base href="${target.origin}${target.pathname}">`;
-                const shimScript = `<script>
-                    (function() {
-                        const REAL_BASE = "${finalUrl}";
-                        const PARENT = window.parent;
-                        const resolve = (url) => { try { return new URL(url, REAL_BASE).href; } catch(e) { return url; } };
-                        const originalFetch = window.fetch;
-                        window.fetch = async (input, init) => {
-                            const url = resolve(typeof input === 'string' ? input : input.url);
-                            if (url.startsWith('http') && !url.includes(window.location.host)) {
-                                const id = Math.random().toString(36).slice(2);
-                                return new Promise((resolveFetch, rejectFetch) => {
-                                    const handler = (e) => {
-                                        if (e.data.type === 'fetch-response' && e.data.id === id) {
-                                            window.removeEventListener('message', handler);
-                                            if (e.data.error) rejectFetch(new Error(e.data.error));
-                                            else resolveFetch(new Response(e.data.body, { status: e.data.status, headers: e.data.headers }));
-                                        }
-                                    };
-                                    window.addEventListener('message', handler);
-                                    PARENT.postMessage({ type: 'fetch-request', id, url, method: init?.method || 'GET', headers: init?.headers, body: init?.body }, '*');
-                                });
-                            }
-                            return originalFetch(input, init);
-                        };
-                        const originalPush = window.history.pushState;
-                        const originalReplace = window.history.replaceState;
-                        window.history.pushState = (state, title, url) => {
-                            if (url) PARENT.postMessage({ type: 'url-update', url: resolve(url) }, '*');
-                            try { originalPush.apply(window.history, [state, title, url]); } catch(e) {}
-                        };
-                        window.history.replaceState = (state, title, url) => {
-                            if (url) PARENT.postMessage({ type: 'url-update', url: resolve(url) }, '*');
-                            try { originalReplace.apply(window.history, [state, title, url]); } catch(e) {}
-                        };
-                        document.addEventListener('click', e => {
-                            const link = e.target.closest('a');
-                            if (link && link.href && !link.href.startsWith('javascript:')) {
-                                if (link.getAttribute('target') === '_blank') return;
-                                setTimeout(() => { if (!e.defaultPrevented) { e.preventDefault(); PARENT.postMessage({ type: 'navigation', url: resolve(link.getAttribute('href')) }, '*'); } }, 0);
-                            }
-                        }, true);
-                        document.addEventListener('submit', e => {
-                            const form = e.target;
-                            if ((form.getAttribute('method') || 'GET').toUpperCase() === 'GET') {
-                                setTimeout(() => { if (!e.defaultPrevented) { e.preventDefault(); const url = new URL(form.getAttribute('action') || '', REAL_BASE); const formData = new FormData(form); for (const [key, value] of formData.entries()) url.searchParams.set(key, value); PARENT.postMessage({ type: 'navigation', url: url.href }, '*'); } }, 0);
-                            }
-                        }, true);
-                    })();
-                <\/script>`;
-                htmlText = htmlText.replace(/<meta[^>]*http-equiv=["']?Content-Security-Policy["']?[^>]*>/gi, '').replace(/<meta[^>]*http-equiv=["']?X-Frame-Options["']?[^>]*>/gi, '');
-                htmlText = htmlText.includes("<head>") ? htmlText.replace("<head>", `<head>${baseTag}${shimScript}`) : `${baseTag}${shimScript}${htmlText}`;
-            }
-            iframeElement.srcdoc = htmlText;
-        } catch (err) {
-            console.error("Proxy fetch error:", err);
-            iframeElement.srcdoc = `<html><body style="background:#202124; display:flex; align-items:center; justify-content:center; height:100vh; text-align:center;"><h3 style="color:#ff6b6b; font-family:monospace;">proxy error:<br/>${err}</h3></body></html>`;
-        } finally { isLoading = false; }
+        iframeElement.removeAttribute("srcdoc");
+        iframeElement.src = PROXY_URL + finalUrl;
+        
+        setTimeout(() => { isLoading = false; }, 1500);
     }
 
     export { goBack, goForward, refresh, navigate, inputUrl };
 </script>
 
 <div class="browser-container">
-    {#if !hasAcceptedWarning}
-        <div class="warning">
-            <span class="material-symbols-outlined">warning</span>
-            {#if connectionError}
-                <h3>Proxy Connection Failed</h3>
-            {:else}
-                <h3>Proxy Engine Ready</h3>
-            {/if}
-            <p>using epoxy transport for about:blank compatibility.</p>
-            {#if connectionError}
-                <p class="error-text">{connectionError}</p>
-                <button on:click={() => { initProxyEngine(); }}>Retry Connection</button>
-            {:else if !proxyReady}
-                <p>connecting to wisp server...</p>
-            {/if}
-            <button on:click={acceptWarning}>Ok, Proceed</button>
+    <div class="navbar">
+        <div class="nav-controls">
+            <button on:click={goBack} title="Back">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <button on:click={goForward} title="Forward">
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+            <button on:click={refresh} title="Refresh">
+                <span class="material-symbols-outlined">refresh</span>
+            </button>
         </div>
-    {:else}
-        <div class="navbar">
-            <div class="nav-controls">
-                <button on:click={goBack} title="Back">
-                    <span class="material-symbols-outlined">arrow_back</span>
-                </button>
-                <button on:click={goForward} title="Forward">
-                    <span class="material-symbols-outlined">arrow_forward</span>
-                </button>
-                <button on:click={refresh} title="Refresh">
-                    <span class="material-symbols-outlined">refresh</span>
-                </button>
-            </div>
-            <div class="address-bar">
-                <span class="material-symbols-outlined search-icon">search</span>
-                <input type="text" bind:value={inputUrl} on:keydown={handleKeydown} placeholder="search or enter address..." />
-                {#if isLoading} <div class="loader"></div> {/if}
-            </div>
+        <div class="address-bar">
+            <span class="material-symbols-outlined search-icon">search</span>
+            <input type="text" bind:value={inputUrl} on:keydown={handleKeydown} placeholder="search or enter address..." />
+            {#if isLoading} <div class="loader"></div> {/if}
         </div>
-        <div class="iframe-wrapper" bind:this={iframeContainer}></div>
-    {/if}
+    </div>
+    <div class="iframe-wrapper" bind:this={iframeContainer}></div>
 </div>
 
 <style>
