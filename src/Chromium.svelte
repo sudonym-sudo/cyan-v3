@@ -83,93 +83,22 @@
 
     function handleKeydown(e: KeyboardEvent) { if (e.key === "Enter") navigate(inputUrl); }
 
-    const PROXY_URL = "https://reds-exploit-corner.examprepare.help/embed.html";
+    const PROXY_URL = "/proxy.html#";
 
     async function navigate(url: string) {
         let finalUrl = formatUrl(url);
         inputUrl = finalUrl === "cyan:newtab" ? "" : finalUrl;
         currentUrl = finalUrl;
-        if (!iframeElement) return;
-        isLoading = true;
-
-        console.log("[chromium] navigating to:", finalUrl);
+        
+        console.log("[chromium] launching proxy in new tab:", finalUrl);
 
         if (finalUrl === "cyan:newtab") {
-            const landingPage = `
-            <!DOCTYPE html>
-            <html style="background:#000; color:#fff; font-family:monospace; height:100%;">
-            <head>
-                <meta charset="UTF-8">
-                <link rel="preconnect" href="https://fonts.googleapis.com">
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-            </head>
-            <body style="margin:0; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
-                <h1 style="font-family:'Instrument Serif', serif; font-weight:400; font-style:italic; font-size:96px; margin:0 0 40px 0; color:#fff; width:100%;">chromium</h1>
-                <form id="search-form" style="width:80%; max-width:600px; display:flex; justify-content:center;">
-                    <input name="q" autofocus autocomplete="off" placeholder="search..." style="width:100%; background:#111; border:1px solid #222; border-radius:30px; padding:15px 30px; color:#fff; font-size:18px; outline:none; font-family:inherit;">
-                </form>
-                <script>
-                    document.getElementById('search-form').addEventListener('submit', e => {
-                        e.preventDefault();
-                        const q = e.target.q.value;
-                        const url = "https://search.brave.com/search?q=" + encodeURIComponent(q);
-                        window.parent.postMessage({ type: 'navigation', url: url }, '*');
-                    });
-                <\/script>
-            </body>
-            </html>`;
-            iframeElement.removeAttribute("src");
-            iframeElement.srcdoc = landingPage;
-            isLoading = false;
+            // keep the landing page as an iframe or whatever
             return;
         }
 
-        try {
-            console.log("[chromium] fetching proxy page...");
-            const response = await fetch(PROXY_URL);
-            if (!response.ok) throw new Error(`Proxy page fetch failed: ${response.status}`);
-            
-            let html = await response.text();
-            console.log("[chromium] proxy page fetched, size:", html.length);
-            
-            const baseTag = '<base href="https://reds-exploit-corner.examprepare.help/">';
-            // Since srcdoc doesn't have a URL hash, we manually set it so the internal scripts work.
-            const hashFix = `
-                <script>
-                    window.location.hash = "#${finalUrl}";
-                <\/script>
-            `;
-
-            if (html.includes("<head>")) {
-                html = html.replace("<head>", `<head>${baseTag}${hashFix}`);
-            } else if (html.includes("<html>")) {
-                html = html.replace("<html>", `<html><head>${baseTag}${hashFix}</head>`);
-            } else {
-                html = baseTag + hashFix + html;
-            }
-
-            // Fix wispurl and worker path
-            html = html.replace(/location\.host \+ "\/wisp\/"/g, '"reds-exploit-corner.examprepare.help/wisp/"');
-            html = html.replace(/\/baremux\/worker\.js/g, '/workers/worker.js');
-
-            console.log("[chromium] injecting srcdoc...");
-            iframeElement.removeAttribute("src");
-            iframeElement.srcdoc = html;
-        } catch (err) {
-            console.error("[chromium] proxy fetch failed:", err);
-            const errorHtml = `
-            <html><body style="background:#202124; color:#ff6b6b; display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh; text-align:center; font-family:monospace;">
-                <h3>Proxy Connection Error</h3>
-                <p>${err}</p>
-                <p>The proxy server or wisp connection might be down.</p>
-                <button onclick="window.parent.postMessage({type:'navigation', url:'${finalUrl}'}, '*')" style="background:#333; color:#fff; border:1px solid #555; padding:8px 16px; cursor:pointer; border-radius:4px;">Retry</button>
-            </body></html>`;
-            iframeElement.removeAttribute("src");
-            iframeElement.srcdoc = errorHtml;
-        }
-        
-        setTimeout(() => { isLoading = false; }, 1500);
+        window.open(PROXY_URL + finalUrl, "_blank");
+        isLoading = false;
     }
 
     export { goBack, goForward, refresh, navigate, inputUrl };
@@ -178,12 +107,6 @@
 <div class="browser-container">
     <div class="navbar">
         <div class="nav-controls">
-            <button on:click={goBack} title="Back">
-                <span class="material-symbols-outlined">arrow_back</span>
-            </button>
-            <button on:click={goForward} title="Forward">
-                <span class="material-symbols-outlined">arrow_forward</span>
-            </button>
             <button on:click={refresh} title="Refresh">
                 <span class="material-symbols-outlined">refresh</span>
             </button>
@@ -191,10 +114,13 @@
         <div class="address-bar">
             <span class="material-symbols-outlined search-icon">search</span>
             <input type="text" bind:value={inputUrl} on:keydown={handleKeydown} placeholder="search or enter address..." />
-            {#if isLoading} <div class="loader"></div> {/if}
         </div>
     </div>
-    <div class="iframe-wrapper" bind:this={iframeContainer}></div>
+    <div class="iframe-wrapper">
+        <div style="color:#fff; text-align:center; padding-top:50px;">
+            <p>proxy is now launching in a new tab to avoid origin restrictions.</p>
+        </div>
+    </div>
 </div>
 
 <style>
