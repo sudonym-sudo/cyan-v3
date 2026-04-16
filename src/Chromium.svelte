@@ -134,22 +134,26 @@
             console.log("[chromium] proxy page fetched, size:", html.length);
             
             const baseTag = '<base href="https://reds-exploit-corner.examprepare.help/">';
+            // Since srcdoc doesn't have a URL hash, we manually set it so the internal scripts work.
+            const hashFix = `
+                <script>
+                    window.location.hash = "#${finalUrl}";
+                <\/script>
+            `;
+
             if (html.includes("<head>")) {
-                html = html.replace("<head>", `<head>${baseTag}`);
+                html = html.replace("<head>", `<head>${baseTag}${hashFix}`);
             } else if (html.includes("<html>")) {
-                html = html.replace("<html>", `<html><head>${baseTag}</head>`);
+                html = html.replace("<html>", `<html><head>${baseTag}${hashFix}</head>`);
             } else {
-                html = baseTag + html;
+                html = baseTag + hashFix + html;
             }
 
             html = html.replace(/location\.host \+ "\/wisp\/"/g, '"reds-exploit-corner.examprepare.help/wisp/"');
 
-            const blob = new Blob([html], { type: 'text/html' });
-            const blobUrl = URL.createObjectURL(blob);
-
-            iframeElement.removeAttribute("srcdoc");
-            iframeElement.src = blobUrl + "#" + finalUrl;
-            console.log("[chromium] blob navigation triggered");
+            console.log("[chromium] injecting srcdoc...");
+            iframeElement.removeAttribute("src");
+            iframeElement.srcdoc = html;
         } catch (err) {
             console.error("[chromium] proxy fetch failed:", err);
             const errorHtml = `
