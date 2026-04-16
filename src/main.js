@@ -30,12 +30,14 @@ async function initGlobalProxy() {
 
             const isHttp = url.startsWith("http");
             const host = window.location.host;
+            const isWorker = url.endsWith(".js") && url.includes("worker");
             const shouldProxy = 
                 url.includes("googleapis.com") || 
                 url.includes("firebase") || 
                 url.includes("huggingface") ||
                 url.includes("reds-exploit-corner.examprepare.help") ||
-                (isRestricted && isHttp && (host === "" || !url.includes(host)));
+                (isRestricted && isHttp && (host === "" || !url.includes(host))) ||
+                isWorker;
 
             if (shouldProxy) {
                 const method = init?.method || "GET";
@@ -75,7 +77,7 @@ async function initGlobalProxy() {
                         headers: finalHeaders
                     });
                 } catch (e) {
-                    console.error("[proxy] fetch failed:", e);
+                    console.error("[proxy] fetch failed (worker/asset):", e);
                     return originalFetch(input, init);
                 }
             }
