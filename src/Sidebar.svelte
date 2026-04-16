@@ -107,7 +107,7 @@
             <div class="logo-area">
                 <div class="site-info">
                     <span class="site-name">CYλN</span>
-                    <span class="version">v3.3.6</span>
+                    <span class="version">v3.3.7</span>
                 </div>
             </div>
 
