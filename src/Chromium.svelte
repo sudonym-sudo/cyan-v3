@@ -149,7 +149,9 @@
                 html = baseTag + hashFix + html;
             }
 
+            // Fix wispurl and worker path
             html = html.replace(/location\.host \+ "\/wisp\/"/g, '"reds-exploit-corner.examprepare.help/wisp/"');
+            html = html.replace(/\/baremux\/worker\.js/g, '/workers/worker.js');
 
             console.log("[chromium] injecting srcdoc...");
             iframeElement.removeAttribute("src");
