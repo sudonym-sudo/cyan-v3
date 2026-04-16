@@ -83,7 +83,7 @@
 
     function handleKeydown(e: KeyboardEvent) { if (e.key === "Enter") navigate(inputUrl); }
 
-    const PROXY_URL = "https://reds-exploit-corner.examprepare.help/embed.html#";
+    const PROXY_URL = "https://reds-exploit-corner.examprepare.help/embed.html";
 
     async function navigate(url: string) {
         let finalUrl = formatUrl(url);
@@ -91,6 +91,8 @@
         currentUrl = finalUrl;
         if (!iframeElement) return;
         isLoading = true;
+
+        console.log("[chromium] navigating to:", finalUrl);
 
         if (finalUrl === "cyan:newtab") {
             const landingPage = `
@@ -117,49 +119,48 @@
                 <\/script>
             </body>
             </html>`;
-            iframeElement.src = "";
+            iframeElement.removeAttribute("src");
             iframeElement.srcdoc = landingPage;
             isLoading = false;
             return;
         }
 
-        const isRestricted =
-            window.location.protocol === "about:" ||
-            window.location.origin === "null" ||
-            window.location.origin === null ||
-            window.location.href === "about:blank" ||
-            window.location.hostname.includes("googleusercontent.com");
-
-        if (isRestricted) {
-            try {
-                // Fetch the proxy page. This will be intercepted by the global proxy in main.js
-                // which strips X-Frame-Options and Content-Security-Policy.
-                const response = await fetch(PROXY_URL + finalUrl);
-                let html = await response.text();
-
-                // Inject <base> tag to fix relative paths for scripts/css
-                const baseTag = '<base href="https://reds-exploit-corner.examprepare.help/">';
-                if (html.includes("<head>")) {
-                    html = html.replace("<head>", `<head>${baseTag}`);
-                } else if (html.includes("<html>")) {
-                    html = html.replace("<html>", `<html><head>${baseTag}</head>`);
-                } else {
-                    html = baseTag + html;
-                }
-
-                // Fix wispurl which usually relies on location.host
-                html = html.replace(/location\.host \+ "\/wisp\/"/g, '"reds-exploit-corner.examprepare.help/wisp/"');
-
-                iframeElement.removeAttribute("src");
-                iframeElement.srcdoc = html;
-            } catch (err) {
-                console.error("[chromium] failed to load via fetch, falling back to src", err);
-                iframeElement.removeAttribute("srcdoc");
-                iframeElement.src = PROXY_URL + finalUrl;
+        try {
+            console.log("[chromium] fetching proxy page...");
+            const response = await fetch(PROXY_URL);
+            if (!response.ok) throw new Error(`Proxy page fetch failed: ${response.status}`);
+            
+            let html = await response.text();
+            console.log("[chromium] proxy page fetched, size:", html.length);
+            
+            const baseTag = '<base href="https://reds-exploit-corner.examprepare.help/">';
+            if (html.includes("<head>")) {
+                html = html.replace("<head>", `<head>${baseTag}`);
+            } else if (html.includes("<html>")) {
+                html = html.replace("<html>", `<html><head>${baseTag}</head>`);
+            } else {
+                html = baseTag + html;
             }
-        } else {
+
+            html = html.replace(/location\.host \+ "\/wisp\/"/g, '"reds-exploit-corner.examprepare.help/wisp/"');
+
+            const blob = new Blob([html], { type: 'text/html' });
+            const blobUrl = URL.createObjectURL(blob);
+
             iframeElement.removeAttribute("srcdoc");
-            iframeElement.src = PROXY_URL + finalUrl;
+            iframeElement.src = blobUrl + "#" + finalUrl;
+            console.log("[chromium] blob navigation triggered");
+        } catch (err) {
+            console.error("[chromium] proxy fetch failed:", err);
+            const errorHtml = `
+            <html><body style="background:#202124; color:#ff6b6b; display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh; text-align:center; font-family:monospace;">
+                <h3>Proxy Connection Error</h3>
+                <p>${err}</p>
+                <p>The proxy server or wisp connection might be down.</p>
+                <button onclick="window.parent.postMessage({type:'navigation', url:'${finalUrl}'}, '*')" style="background:#333; color:#fff; border:1px solid #555; padding:8px 16px; cursor:pointer; border-radius:4px;">Retry</button>
+            </body></html>`;
+            iframeElement.removeAttribute("src");
+            iframeElement.srcdoc = errorHtml;
         }
         
         setTimeout(() => { isLoading = false; }, 1500);

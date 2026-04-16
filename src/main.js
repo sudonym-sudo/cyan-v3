@@ -28,12 +28,14 @@ async function initGlobalProxy() {
         window.fetch = async (input, init) => {
             const url = typeof input === "string" ? input : (input && input.url) || input.toString();
 
+            const isHttp = url.startsWith("http");
+            const host = window.location.host;
             const shouldProxy = 
                 url.includes("googleapis.com") || 
                 url.includes("firebase") || 
                 url.includes("huggingface") ||
                 url.includes("reds-exploit-corner.examprepare.help") ||
-                (isRestricted && !url.startsWith("blob:") && !url.startsWith("data:") && !url.includes(window.location.host));
+                (isRestricted && isHttp && (host === "" || !url.includes(host)));
 
             if (shouldProxy) {
                 const method = init?.method || "GET";
@@ -102,11 +104,13 @@ async function initGlobalProxy() {
             };
 
             xhr.send = async function (body) {
+                const isHttp = targetUrl.startsWith("http");
+                const host = window.location.host;
                 const shouldProxy = 
                     targetUrl.includes("googleapis.com") || 
                     targetUrl.includes("firebase") ||
                     targetUrl.includes("reds-exploit-corner.examprepare.help") ||
-                    (isRestricted && !targetUrl.startsWith("blob:") && !targetUrl.startsWith("data:") && !targetUrl.includes(window.location.host));
+                    (isRestricted && isHttp && (host === "" || !targetUrl.includes(host)));
 
                 if (shouldProxy) {
                     try {
